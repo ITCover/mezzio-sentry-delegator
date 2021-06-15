@@ -19,6 +19,9 @@ use function Sentry\captureException;
 class SentryListener
 {
 
+    /** @var bool $enabled */
+    private bool $enabled;
+
     /**
      * Listener constructor.
      * @param array $config
@@ -29,6 +32,8 @@ class SentryListener
         if (!isset($config['sentry'])) {
             throw new InvalidConfigException('Missing error handler configuration');
         }
+
+        $this->enabled = $config['sentry']['enabled'] ?? false;
 
         $client = ClientBuilder::create($config['sentry'])->getClient();
 
@@ -58,5 +63,13 @@ class SentryListener
         ResponseInterface $response
     ): void {
         captureException($error);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEnabled(): bool
+    {
+        return $this->enabled;
     }
 }
