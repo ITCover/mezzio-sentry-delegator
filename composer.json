@@ -3,7 +3,7 @@
     "description": "Mezzio delegator for Sentry",
     "type": "library",
     "keywords": ["sentry", "error tracking", "mezzio"],
-    "version": "0.1",
+    "version": "1.0.0",
     "require": {
         "php": ">=7.3",
         "laminas/laminas-servicemanager": "^3.6",
