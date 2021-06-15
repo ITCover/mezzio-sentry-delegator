@@ -33,7 +33,7 @@ class SentryListener
             throw new InvalidConfigException('Missing error handler configuration');
         }
 
-        $this->enabled = $config['sentry']['enabled'] ?? false;
+        $this->enabled = $config['errorTracking']['enabled'] ?? false;
 
         $client = ClientBuilder::create($config['sentry'])->getClient();
 
